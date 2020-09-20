@@ -1,6 +1,14 @@
 import React, {useEffect, useState} from 'react'
 
-const Home = function Home() {
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      url: context.query.url
+    }
+  }
+}
+
+const Home = (props) => {
 
   const [data, setData] = useState("")
 
@@ -10,7 +18,7 @@ const Home = function Home() {
 
       try {
 
-        const response = await fetch('/api/vercel')
+        const response = await fetch('/api/vercel?url=' + props.url)
 
         const text = await response.text()
 

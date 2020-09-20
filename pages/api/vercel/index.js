@@ -2,7 +2,7 @@ import request from 'async-request'
 
 export default async(req, res) => {
 
-    const url = 'https://worldcat-org.now.sh/en/title/70775700'
+    const { query: { url: url } } = req
 
     let response = await request(url, { method: 'POST', data: { "_vercel_password" : "W3lcom3!" } })
 
