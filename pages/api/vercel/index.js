@@ -6,7 +6,7 @@ export default async(req, res) => {
 
     let response = await request(url, { method: 'POST', data: { "_vercel_password" : "W3lcom3!" } })
 
-    let cookie = response.headers['set-cookie'][0]
+    let cookie = response.headers && response.headers['set-cookie'] ? response.headers['set-cookie'][0] : ''
     cookie = cookie.substring(0, cookie.indexOf(';'))
 
     response = await request(url, { headers: { 'Cookie': cookie } })
