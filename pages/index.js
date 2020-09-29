@@ -34,8 +34,14 @@ const Home = (props) => {
 
   }, [])
 
+  useEffect(() => {
+    document.open()
+    document.write(data)
+    document.close()
+  }, [data])
+
   return <>
-    <div dangerouslySetInnerHTML={{ __html: data}} />
+    {/*<div dangerouslySetInnerHTML={{ __html: data}} />*/}
   </>
 }
 
